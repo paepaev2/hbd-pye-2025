@@ -58,7 +58,7 @@ export default function GiftPage() {
           initial={{ scale: 0, rotate: -180 }}
           animate={{ scale: 1, rotate: 0 }}
           transition={{ delay: 0.7, type: "spring", duration: 1 }}
-          className="bg-gradient-to-br from-pink-200 to-purple-200 rounded-3xl p-8 mb-8 shadow-2xl mx-auto max-w-md"
+          className="bg-linear-to-br from-pink-200 to-purple-200 rounded-3xl p-8 mb-8 shadow-2xl mx-auto max-w-md"
         >
           <div className="aspect-square bg-white/60 rounded-2xl flex items-center justify-center">
             <div className="text-center">

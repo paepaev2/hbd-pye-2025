@@ -24,7 +24,7 @@ export default function Home() {
             ease: "easeInOut",
           }}
         >
-          <h1 className="text-5xl md:text-7xl font-bold text-pink-400 mb-4">
+          <h1 className="text-5xl md:text-5xl font-bold text-pink-400 mb-4">
             ☃️ Happy Birthday to PYE 🎂
           </h1>
           <p className="text-2xl md:text-3xl text-purple-300 mb-8">
@@ -36,7 +36,7 @@ export default function Home() {
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={() => router.push("/inazuma")}
-          className="bg-gradient-to-r from-pink-300 to-purple-300 text-white px-8 py-4 rounded-full text-xl font-semibold shadow-lg hover:shadow-2xl transition-all"
+          className="bg-linear-to-r from-pink-300 to-purple-300 text-white px-8 py-4 rounded-full text-xl font-semibold shadow-lg hover:shadow-2xl transition-all"
         >
           🤓 Click here to get 1 year older ☝️
         </motion.button>

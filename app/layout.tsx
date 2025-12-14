@@ -5,7 +5,7 @@ import "./globals.css";
 const quicksand = Quicksand({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Happy Birthday PYE!",
+  title: "Happy Birthday PYE",
   description: "eieiei 💃🎂",
 };
 

@@ -176,7 +176,7 @@ export default function PuzzlePage() {
                       <motion.div
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
-                        className="w-full h-full bg-gradient-to-br from-pink-200 to-purple-200 rounded-xl flex items-center justify-center text-3xl font-bold text-white shadow-lg"
+                        className="w-full h-full bg-linear-to-br from-pink-200 to-purple-200 rounded-xl flex items-center justify-center text-3xl font-bold text-white shadow-lg"
                       >
                         {slot.value}
                       </motion.div>
@@ -201,7 +201,7 @@ export default function PuzzlePage() {
               className={`aspect-square rounded-2xl flex items-center justify-center text-2xl font-bold cursor-pointer shadow-lg transition-all ${
                 char.placed
                   ? "bg-gray-300 opacity-30"
-                  : "bg-gradient-to-br from-purple-200 to-pink-200 text-white hover:shadow-xl"
+                  : "bg-linear-to-br from-purple-200 to-pink-200 text-white hover:shadow-xl"
               }`}
             >
               {char.placed ? "" : char.value}
@@ -231,7 +231,7 @@ export default function PuzzlePage() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={handleSubmit}
-            className="bg-gradient-to-r from-pink-400 to-purple-400 text-white px-12 py-4 rounded-full text-xl font-semibold shadow-lg hover:shadow-2xl transition-all"
+            className="bg-linear-to-r from-pink-400 to-purple-400 text-white px-12 py-4 rounded-full text-xl font-semibold shadow-lg hover:shadow-2xl transition-all"
           >
             อัคคีสลาตัน 🔥🌪️
           </motion.button>
@@ -253,7 +253,7 @@ export default function PuzzlePage() {
 
 function CharacterBox({ value }: { value: number }) {
   return (
-    <div className="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-pink-300 to-purple-300 rounded-2xl flex items-center justify-center text-2xl md:text-3xl font-bold text-white shadow-lg">
+    <div className="w-16 h-16 md:w-20 md:h-20 bg-linear-to-br from-pink-300 to-purple-300 rounded-2xl flex items-center justify-center text-2xl md:text-3xl font-bold text-white shadow-lg">
       {value}
     </div>
   );

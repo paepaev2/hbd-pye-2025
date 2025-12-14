@@ -68,7 +68,7 @@ export default function MoonPage() {
               className="cursor-pointer"
             >
               <div className="bg-white/60 backdrop-blur-sm rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all">
-                <div className="aspect-square bg-gradient-to-br from-indigo-200 to-purple-200 rounded-full mb-4 flex items-center justify-center text-4xl">
+                <div className="aspect-square bg-linear-to-br from-indigo-200 to-purple-200 rounded-full mb-4 flex items-center justify-center text-4xl">
                   {getMoonEmoji(phase.name)}
                 </div>
                 <p className="text-center text-sm md:text-base font-semibold text-purple-400">
