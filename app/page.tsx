@@ -32,15 +32,6 @@ export default function Home() {
           </p>
         </motion.div>
 
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
-          className="text-xl md:text-2xl text-pink-300 mb-12"
-        >
-          From PAE 🧚‍♀️🌟
-        </motion.p>
-
         <motion.button
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
@@ -49,6 +40,15 @@ export default function Home() {
         >
           🤓 Click here to get 1 year older ☝️
         </motion.button>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+          className="text-xl md:text-2xl text-pink-300 mt-12"
+        >
+          From PAE 🧚‍♀️🌟
+        </motion.p>
       </motion.div>
     </div>
   );
