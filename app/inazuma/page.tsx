@@ -85,7 +85,17 @@ export default function PuzzlePage() {
   };
 
   const handleReset = () => {
-    setSlots([null, null, null, null, null]);
+    setSlots([
+        null, 
+        null, 
+        {
+            id: -1,
+            value: -1,
+            placed: true,
+        }, 
+        null, 
+        null
+]);
     setCharacters(
       characters.map((c) => ({ ...c, placed: false }))
     );
