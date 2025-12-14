@@ -4,11 +4,14 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
 import HomeButton from "@/components/HomeButton";
+import Image from "next/image";
 
 type Character = {
   id: number;
   value: number;
   placed: boolean;
+  image?: string;
+  name?: string;
 };
 
 export default function PuzzlePage() {
@@ -17,22 +20,22 @@ export default function PuzzlePage() {
   const [messageType, setMessageType] = useState<"success" | "error" | "">("");
 
   const [characters, setCharacters] = useState<Character[]>([
-    { id: 1, value: 1, placed: false },
-    { id: 2, value: 2, placed: false },
-    { id: 3, value: 3, placed: false },
-    { id: 4, value: 4, placed: false },
-    { id: 5, value: 5, placed: false },
-    { id: 6, value: 6, placed: false },
-    { id: 7, value: 7, placed: false },
-    { id: 8, value: 8, placed: false },
-    { id: 9, value: 9, placed: false },
-    { id: 10, value: 10, placed: false },
-    { id: 11, value: 11, placed: false },
-    { id: 12, value: 12, placed: false },
-    { id: 13, value: 13, placed: false },
-    { id: 14, value: 14, placed: false },
-    { id: 15, value: 15, placed: false },
-    { id: 16, value: 16, placed: false },
+    { id: 1, value: 1, placed: false, image: "/characters/1endou.webp", name: "Endou Mamoru" },
+    { id: 2, value: 2, placed: false, image: "/characters/2kazemaru.webp", name: "Kazemaru Ichirouta" },
+    { id: 3, value: 3, placed: false, image: "/characters/3kirino.webp", name: "Kirino Ranmaru" },
+    { id: 4, value: 4, placed: false, image: "/characters/4tsunami.webp", name: "Tsunami Jousuke" },
+    { id: 5, value: 5, placed: false, image: "/characters/5shinsuke.webp", name: "Nishizono Shinsuke" },
+    { id: 6, value: 6, placed: false, image: "/characters/6kogure.webp", name: "Kogure Yuuya" },
+    { id: 7, value: 7, placed: false, image: "/characters/7tobitaka.webp", name: "Tobitaka Tsubasa" },
+    { id: 8, value: 8, placed: false, image: "/characters/8tenma.webp", name: "Matsukaze Tenma" },
+    { id: 9, value: 9, placed: false, image: "/characters/9fubuki.webp", name: "Fubuki Shirou" },
+    { id: 10, value: 10, placed: false, image: "/characters/10goenji.webp", name: "Goenji Shuuya" },
+    { id: 11, value: 11, placed: false, image: "/characters/11toramaru.webp", name: "Utsunomiya Toramaru" },
+    { id: 13, value: 13, placed: false, image: "/characters/13midorikawa.webp", name: "Midorikawa Ryuuji" },
+    { id: 14, value: 14, placed: false, image: "/characters/14kidou.webp", name: "Kidou Yuuto" },
+    { id: 15, value: 15, placed: false, image: "/characters/15kiriya.webp", name: "Kiriya Kazuya" },
+    { id: 18, value: 18, placed: false, image: "/characters/18hiroto.webp", name: "Kiyama Hiroto" },
+    { id: 20, value: 20, placed: false, image: "/characters/20tachimukai.webp", name: "Tachimukai Yuuki" },
   ]);
 
   const [slots, setSlots] = useState<(Character | null)[]>([
@@ -148,10 +151,10 @@ export default function PuzzlePage() {
         {/* Equation Display */}
         <div className="bg-white/60 backdrop-blur-sm rounded-3xl p-8 mb-8 shadow-xl">
           <div className="flex items-center justify-center gap-4 mb-4 flex-wrap">
-            <CharacterBox value={5} />
-            <CharacterBox value={1} />
-            <CharacterBox value={4} />
-            <CharacterBox value={1} />
+            <CharacterBox value={5} image="/characters/5shinsuke.webp" />
+            <CharacterBox value={1} image="/characters/1endou.webp" />
+            <CharacterBox value={4} image="/characters/4tsunami.webp" />
+            <CharacterBox value={1} image="/characters/1endou.webp" />
           </div>
 
           <div className="text-center text-3xl font-bold text-purple-400 mb-4">
@@ -169,16 +172,27 @@ export default function PuzzlePage() {
                 ) : (
                   <motion.div
                     whileHover={{ scale: 1.05 }}
-                    className="w-20 h-20 md:w-24 md:h-24 rounded-2xl border-4 border-dashed border-pink-300 bg-white/40 flex items-center justify-center cursor-pointer"
+                    className="w-20 h-20 md:w-24 md:h-24 rounded-2xl border-4 border-dashed border-pink-300 bg-white/40 flex items-center justify-center cursor-pointer overflow-hidden"
                     onClick={() => slot && handleCharacterClick(slot)}
                   >
                     {slot ? (
                       <motion.div
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
-                        className="w-full h-full bg-linear-to-br from-pink-200 to-purple-200 rounded-xl flex items-center justify-center text-3xl font-bold text-white shadow-lg"
+                        className="w-full h-full bg-linear-to-br from-pink-200 to-purple-200 rounded-xl flex items-center justify-center text-3xl font-bold text-white shadow-lg relative"
                       >
-                        {slot.value}
+                        {slot.image ? (
+                          <>
+                            <Image
+                              src={slot.image}
+                              alt={slot.name || ""}
+                              fill
+                              className="object-cover rounded-xl"
+                            />
+                          </>
+                        ) : (
+                          slot.value
+                        )}
                       </motion.div>
                     ) : (
                       <span className="text-pink-200 text-4xl">?</span>
@@ -198,13 +212,22 @@ export default function PuzzlePage() {
               whileHover={{ scale: char.placed ? 1 : 1.1 }}
               whileTap={{ scale: 0.9 }}
               onClick={() => handleCharacterClick(char)}
-              className={`aspect-square rounded-2xl flex items-center justify-center text-2xl font-bold cursor-pointer shadow-lg transition-all ${
+              className={`aspect-square rounded-2xl flex items-center justify-center cursor-pointer shadow-lg transition-all overflow-hidden relative ${
                 char.placed
                   ? "bg-gray-300 opacity-30"
-                  : "bg-linear-to-br from-purple-200 to-pink-200 text-white hover:shadow-xl"
+                  : "bg-linear-to-br from-purple-200 to-pink-200 hover:shadow-xl"
               }`}
             >
-              {char.placed ? "" : char.value}
+              {!char.placed && (
+                <>
+                  <Image
+                    src={char.image || ""}
+                    alt={char.name || ""}
+                    fill
+                    className="object-cover"
+                  />
+                </>
+              )}
             </motion.div>
           ))}
         </div>
@@ -251,10 +274,15 @@ export default function PuzzlePage() {
   );
 }
 
-function CharacterBox({ value }: { value: number }) {
+function CharacterBox({ value, image, name }: { value: number; image?: string; name?: string }) {
   return (
-    <div className="w-16 h-16 md:w-20 md:h-20 bg-linear-to-br from-pink-300 to-purple-300 rounded-2xl flex items-center justify-center text-2xl md:text-3xl font-bold text-white shadow-lg">
-      {value}
+    <div className="w-16 h-16 md:w-20 md:h-20 bg-linear-to-br from-pink-300 to-purple-300 rounded-2xl flex items-center justify-center shadow-lg relative overflow-hidden">
+      <Image
+        src={image || ""}
+        alt={name || ""}
+        fill
+        className="object-cover rounded-2xl"
+      />
     </div>
   );
 }
