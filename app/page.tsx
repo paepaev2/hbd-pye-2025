@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 export default function Home() {
   const router = useRouter();
@@ -31,6 +32,15 @@ export default function Home() {
             17 Dec 2025
           </p>
         </motion.div>
+
+        <div className="relative w-64 h-64 mx-auto mb-8 rounded-2xl shadow-lg">
+          <Image
+            src="/us.jpg"
+            alt="us photo"
+            fill
+            className="mx-auto mb-8 rounded-2xl shadow-lg"
+          />
+        </div>
 
         <motion.button
           whileHover={{ scale: 1.1 }}
