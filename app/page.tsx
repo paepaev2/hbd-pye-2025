@@ -28,7 +28,7 @@ export default function Home() {
           <h1 className="text-5xl md:text-5xl font-bold text-pink-400 mb-4">
             ☃️ Happy Birthday to PYE 🎂
           </h1>
-          <p className="text-2xl md:text-3xl text-purple-300 mb-8">
+          <p className="text-2xl md:text-3xl font-semibold text-purple-300 mb-8">
             17 Dec 2025
           </p>
         </motion.div>
@@ -55,7 +55,7 @@ export default function Home() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
-          className="text-xl md:text-2xl text-pink-300 mt-12"
+          className="text-xl md:text-2xl font-medium text-pink-300 mt-12"
         >
           From PAE 🧚‍♀️🌟
         </motion.p>
