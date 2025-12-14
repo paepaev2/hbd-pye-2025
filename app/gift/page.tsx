@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import HomeButton from "@/components/HomeButton";
+import Image from "next/image";
 
 export default function GiftPage() {
   // Generate random values once using useState with function initializer
@@ -61,8 +62,13 @@ export default function GiftPage() {
           className="bg-linear-to-br from-pink-200 to-purple-200 rounded-3xl p-8 mb-8 shadow-2xl mx-auto max-w-md"
         >
           <div className="aspect-square bg-white/60 rounded-2xl flex items-center justify-center">
-            <div className="text-center">
-              <div className="text-8xl mb-4">🎁</div>
+            <div className="text-center relative w-full h-full">
+              <Image
+                src="/gift.webp"
+                alt="Birthday Gift"
+                fill
+                className="mx-auto rounded-2xl"
+              />
             </div>
           </div>
         </motion.div>
